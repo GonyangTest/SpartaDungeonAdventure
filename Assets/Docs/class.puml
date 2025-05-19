@@ -1,0 +1,85 @@
+@startuml
+    class PlayerController {
+        -float moveSpeed
+        -float jumpForce
+        -int maxHealth
+        -int currentHealth
+        -Rigidbody rb
+        +event Action<int, int> OnHealthChanged
+        
+        -void Move()
+        -void Jump()
+        +void TakeDamage(int damage)
+        +void Heal(int amount)
+        +void ApplyForce(Vector3 force, ForceMode mode)
+        +void UseItem(Item item)
+    }
+    
+    class PlayerInteraction {
+        -float CheckInterval
+        -float CheckDistance
+        -LayerMask interactableLayers
+        -UIManager UIManager
+
+        -void SetPromptText()
+        -void OnInteractInput()
+    }
+
+    class UIManager {
+        -Text promptText
+        -Text interactionText
+        -Image healthBar
+    }
+
+    class ItemManager {
+        -Dictionary<string, Item> items
+
+        +void CreateItem(Item item)
+        +void RemoveItem(Item item)
+    }
+
+    class Item {
+        <<ScriptableObject>>
+        -string itemName
+        -string description
+        -Sprite icon
+        -ItemType itemType
+        -List<ItemEffect> effects
+    }
+
+    enum ItemType {
+        Equipable
+        Consumable
+    }
+
+    abstract class ItemEffect {
+        -string effectName
+        -string description
+        -float effectValue
+        -float duration
+
+        -void ApplyEffect(PlayerController player)
+    }
+
+    class ItemHealth extends ItemEffect {
+    }
+
+    class ItemSpeedUp extends ItemEffect {
+    }
+
+
+    class JumpPad {
+        -float bounceForce
+
+        +void ApplyBounceForce(PlayerController player)
+    }
+
+
+PlayerController "1" -- "1" PlayerInteraction : interacts >
+PlayerController "1" -- "1" UIManager : updates >
+PlayerInteraction "1" -- "1" UIManager : shows prompt >
+ItemManager "1" -- "*" Item : manages >
+Item "1" -- "*" ItemEffect : has >
+JumpPad "1" -- "1" PlayerController : applies >
+
+@enduml
