@@ -7,7 +7,7 @@ public class ItemHealth : ItemEffect
     
     public override void ApplyEffect()
     {
-        PlayerController player = PlayerManager.Instance.Controller;
+        PlayerController player = GameManager.Instance.Controller;
         player.Heal(effectValue);
     }
     

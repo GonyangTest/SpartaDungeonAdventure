@@ -9,8 +9,7 @@ public class UIManager : Singleton<UIManager>
 
     private void Start()
     {
-        PlayerController player = FindObjectOfType<PlayerController>();
-        player.OnHealthChanged += UpdateHealthBar;
+        GameManager.Instance.Controller.OnHealthChanged += UpdateHealthBar;
     }
 
     public void UpdateHealthBar(int currentHealth, int maxHealth)

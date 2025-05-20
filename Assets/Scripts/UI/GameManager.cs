@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using UnityEngine.InputSystem;
 
-public class PlayerManager : Singleton<PlayerManager>
+public class GameManager : Singleton<GameManager>
 {
     public PlayerController Controller;
 } 

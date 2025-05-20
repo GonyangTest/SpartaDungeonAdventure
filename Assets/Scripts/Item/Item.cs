@@ -19,7 +19,7 @@ public class Item : MonoBehaviour
     {
         foreach(ItemEffect effect in itemData.effects)
         {
-            PlayerManager.Instance.Controller.StartItemEffectCoroutine(effect.Effect());
+            GameManager.Instance.Controller.StartItemEffectCoroutine(effect.Effect());
         }
     }
 }
