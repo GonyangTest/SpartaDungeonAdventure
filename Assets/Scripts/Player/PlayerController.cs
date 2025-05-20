@@ -23,12 +23,10 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         _currentHealth = _maxHealth;
-        
     }
     private void Start()
     {
-        PlayerManager.Instance.Controller = this;
-        TakeDamage(70);
+        GameManager.Instance.Controller = this;
     }
 
     private void FixedUpdate()
@@ -55,16 +53,17 @@ public class PlayerController : MonoBehaviour
             _moveInput = Vector2.zero;
         }
     }
-    private void Jump()
+    public void Jump(float jumpForce)
     {
-        rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
 
     public void OnJump(InputAction.CallbackContext context)
     {
+        Debug.Log("OnJump: " + isGrounded());
         if (context.performed && isGrounded())
         {
-            Jump();
+            Jump(_jumpForce);
         }
     }
 
@@ -91,11 +90,13 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        Debug.Log("TakeDamage: " + damage);
         _currentHealth = Mathf.Clamp(_currentHealth - damage, 0, _maxHealth);
         OnHealthChanged?.Invoke(_currentHealth, _maxHealth);
     }
     public void Heal(int amount)
     {
+        Debug.Log("Heal: " + amount);
         _currentHealth = Mathf.Clamp(_currentHealth + amount, 0, _maxHealth);
         OnHealthChanged?.Invoke(_currentHealth, _maxHealth);
     }

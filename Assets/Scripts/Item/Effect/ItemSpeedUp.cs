@@ -7,13 +7,13 @@ public class ItemSpeedUp : ItemEffect
 {
     public override void ApplyEffect()
     {
-        PlayerController player = PlayerManager.Instance.Controller;
+        PlayerController player = GameManager.Instance.Controller;
         player.MoveSpeed += effectValue;
     }
 
     public override void RemoveEffect()
     {
-        PlayerController player = PlayerManager.Instance.Controller;
+        PlayerController player = GameManager.Instance.Controller;
         player.MoveSpeed -= effectValue;
     }
 } 
