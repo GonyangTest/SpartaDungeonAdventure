@@ -8,14 +8,22 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _moveSpeed = 5f;
     [SerializeField] private float _jumpForce = 5f;
     [SerializeField] private int _maxHealth = 100;
-    [SerializeField]private int _currentHealth;
-
+    private int _currentHealth;
     public float MoveSpeed { get => _moveSpeed; set => _moveSpeed = value; }
     private Rigidbody rb;
 
     public LayerMask groundLayer;
 
     private Vector2 _moveInput;
+    private Vector2 _MouseDelta;
+
+    [Header("Look")]
+    [SerializeField] private Transform _cameraTransform;
+    private float _cameraCurrentXRotation;
+    private float _minXLook = -80f;
+    private float _maxXLook = 80f;
+    private float _lookSensitivity = 0.1f;
+
 
     public event Action<int, int> OnHealthChanged;
 
@@ -32,6 +40,11 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
+    }
+
+    private void Update()
+    {
+        CameraLook();
     }
 
     private void Move()
@@ -53,6 +66,16 @@ public class PlayerController : MonoBehaviour
             _moveInput = Vector2.zero;
         }
     }
+    void CameraLook()
+    {
+        _cameraCurrentXRotation += _MouseDelta.y * _lookSensitivity;
+        _cameraCurrentXRotation = Mathf.Clamp(_cameraCurrentXRotation, _minXLook, _maxXLook);
+        _cameraTransform.localRotation = Quaternion.Euler(-_cameraCurrentXRotation, 0, 0);
+
+        transform.rotation *= Quaternion.Euler(0, _MouseDelta.x * _lookSensitivity, 0);
+    }
+
+
     public void Jump(float jumpForce)
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -65,6 +88,11 @@ public class PlayerController : MonoBehaviour
         {
             Jump(_jumpForce);
         }
+    }
+
+    public void OnLook(InputAction.CallbackContext context)
+    {
+        _MouseDelta = context.ReadValue<Vector2>();
     }
 
     private bool isGrounded()
