@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour
+public class UIManager : Singleton<UIManager>
 {
-    [SerializeField] private Text promptText;
-    [SerializeField] private Text interactionText;
-    [SerializeField] private Image healthBar;
+    [SerializeField] private Text _promptText;
+    [SerializeField] private Text _interactionText;
+    [SerializeField] private Image _healthBar;
 
     private void Start()
     {
@@ -15,6 +15,6 @@ public class UIManager : MonoBehaviour
 
     public void UpdateHealthBar(int currentHealth, int maxHealth)
     {
-        healthBar.fillAmount = (float)currentHealth / maxHealth;
+        _healthBar.fillAmount = (float)currentHealth / maxHealth;
     }
 } 

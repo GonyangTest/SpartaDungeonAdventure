@@ -1,18 +1,26 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-[CreateAssetMenu(menuName = "Item/Item")]
-public class Item : ScriptableObject
+public class Item : MonoBehaviour
 {
-    public string itemName;
-    public string description;
-    public Sprite icon;
-    public ItemType itemType;
-    public List<ItemEffect> effects;
+    public ItemData itemData;
+
+    public void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Item Trigger Enter");
+        if(other.gameObject.CompareTag("Player"))
+        {
+            UseItem();
+            Destroy(gameObject);
+        }
+    }
+
+    public void UseItem()
+    {
+        foreach(ItemEffect effect in itemData.effects)
+        {
+            PlayerManager.Instance.Controller.StartItemEffectCoroutine(effect.Effect());
+        }
+    }
 }
 
-public enum ItemType
-{
-    Equipable,
-    Consumable
-} 
