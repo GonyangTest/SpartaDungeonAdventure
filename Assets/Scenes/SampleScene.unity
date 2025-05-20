@@ -267,7 +267,19 @@ MonoBehaviour:
     m_ActionId: 1a7dcc35-e6b7-4022-a1e8-c1b428746d8f
     m_ActionName: Player/Jump[/Keyboard/space]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 215169330}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnLook
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 9b219ca7-e674-46d9-8ff2-1c3e79880122
     m_ActionName: Player/Rotate[/Mouse/delta]
   m_NeverAutoSwitchControlSchemes: 0
@@ -290,10 +302,10 @@ MonoBehaviour:
   _moveSpeed: 5
   _jumpForce: 80
   _maxHealth: 100
-  _currentHealth: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 4294967295
+  _cameraTransform: {fileID: 443603555}
 --- !u!1 &317119402
 GameObject:
   m_ObjectHideFlags: 0
