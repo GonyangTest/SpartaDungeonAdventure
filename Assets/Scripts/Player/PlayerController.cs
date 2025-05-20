@@ -1,13 +1,16 @@
 using UnityEngine;
 using System;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float jumpForce = 5f;
-    [SerializeField] private int maxHealth = 100;
-    private int currentHealth;
+    [SerializeField] private float _moveSpeed = 5f;
+    [SerializeField] private float _jumpForce = 5f;
+    [SerializeField] private int _maxHealth = 100;
+    [SerializeField]private int _currentHealth;
+
+    public float MoveSpeed { get => _moveSpeed; set => _moveSpeed = value; }
     private Rigidbody rb;
 
     public LayerMask groundLayer;
@@ -19,7 +22,13 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        currentHealth = maxHealth;
+        _currentHealth = _maxHealth;
+        
+    }
+    private void Start()
+    {
+        PlayerManager.Instance.Controller = this;
+        TakeDamage(70);
     }
 
     private void FixedUpdate()
@@ -30,7 +39,7 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         Vector3 moveDirection = transform.forward * _moveInput.y + transform.right * _moveInput.x;
-        moveDirection *= moveSpeed;
+        moveDirection *= _moveSpeed;
         moveDirection.y = rb.velocity.y;
         rb.velocity = moveDirection;
     }
@@ -48,7 +57,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Jump()
     {
-        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
     }
 
     public void OnJump(InputAction.CallbackContext context)
@@ -80,8 +89,20 @@ public class PlayerController : MonoBehaviour
         return false;
     }
 
-    public void TakeDamage(int damage) { }
-    public void Heal(int amount) { }
+    public void TakeDamage(int damage)
+    {
+        _currentHealth = Mathf.Clamp(_currentHealth - damage, 0, _maxHealth);
+        OnHealthChanged?.Invoke(_currentHealth, _maxHealth);
+    }
+    public void Heal(int amount)
+    {
+        _currentHealth = Mathf.Clamp(_currentHealth + amount, 0, _maxHealth);
+        OnHealthChanged?.Invoke(_currentHealth, _maxHealth);
+    }
     public void ApplyForce(Vector3 force, ForceMode mode) { }
-    public void UseItem(Item item) { }
+
+    public void StartItemEffectCoroutine(IEnumerator coroutine)
+    {
+        StartCoroutine(coroutine);
+    }
 } 
