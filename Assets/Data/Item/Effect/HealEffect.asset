@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 9e44d915ad4775540b9f262db2a14a21, type: 3}
   m_Name: HealEffect
   m_EditorClassIdentifier: Assembly-CSharp::ItemHealth
   effectName: "\uD68C\uBCF5"
-  description: "\uB2F9 6\uC744 \uD68C\uBCF5\uD569\uB2C8\uB2E4."
+  description: "5\uCD08\uB3D9\uC548 \uB9E4\uCD08 HP 6\uC744 \uD68C\uBCF5\uD569\uB2C8\uB2E4."
   effectValue: 6
   duration: 5
   Interval: 1
