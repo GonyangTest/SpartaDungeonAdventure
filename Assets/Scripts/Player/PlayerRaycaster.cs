@@ -5,6 +5,8 @@ public class PlayerRaycaster : MonoBehaviour
     [SerializeField] private float _raycastInterval = 0.05f;
     [SerializeField] private float _raycastDistance;
     [SerializeField] private LayerMask _interactableLayerMask;
+    [SerializeField] private LayerMask _climbableLayerMask;
+    [SerializeField] private Transform _head;
 
     private IInteractable _interactable;
     public IInteractable Interactable => _interactable;
@@ -13,22 +15,58 @@ public class PlayerRaycaster : MonoBehaviour
 
     private Camera _camera;
 
+    private Rigidbody _rigidbody;
+
+    private bool _isClimbing = false;
+    public bool IsClimbing => _isClimbing;
+
+    private Vector3 _climbableNormalPoint;
+    public Vector3 ClimbableNormalPoint => _climbableNormalPoint;
+
     private void Start()
     {
         _camera = Camera.main;
+        _rigidbody = GetComponent<Rigidbody>();
         GameManager.Instance.Raycaster = this;
     }
 
     private void Update()
     {
-        RaycastObject();
+        if (Time.time - _lastRaycastTime < _raycastInterval) return;
+            _lastRaycastTime = Time.time;  
+             
+        Debug.Log(_rigidbody.velocity);
+        RaycastInteractableObject();
+        RaycastClimbableObject();
     }
 
-    public void RaycastObject()
+    public void RaycastClimbableObject()
     {
-        if (Time.time - _lastRaycastTime < _raycastInterval) return;
-        _lastRaycastTime = Time.time;
+        Ray ray = new Ray(_head.position, _head.forward);
+        Debug.DrawRay(ray.origin, ray.direction * 0.5f, Color.red);
+        RaycastHit hit;
 
+        if(Physics.Raycast(ray, out hit, 0.5f, _climbableLayerMask))
+        {
+            if(!GameManager.Instance.Controller.isGrounded())
+            {
+                if (_isClimbing)
+                {
+                    Vector3 velocity = _rigidbody.velocity;
+                    velocity.y = 0;
+                    _rigidbody.velocity = velocity; 
+                }
+                _isClimbing = true;
+            }
+        }
+        else
+        {
+            _isClimbing = false;
+        }
+    }
+
+    public void RaycastInteractableObject()
+    {
         Ray ray = _camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
         RaycastHit hit;
 
