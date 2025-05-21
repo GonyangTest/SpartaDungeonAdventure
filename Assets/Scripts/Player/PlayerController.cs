@@ -47,6 +47,11 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
+
+        if(GameManager.Instance.Raycaster.IsClimbing)
+        {
+            rb.AddForce(Vector3.up * rb.mass * 9.81f, ForceMode.Force);
+        }
     }
 
     private void Update()
@@ -107,7 +112,7 @@ public class PlayerController : MonoBehaviour
 
     public void Jump(float jumpForce)
     {
-        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        rb.AddForce(Vector3.up * jumpForce + transform.forward, ForceMode.Impulse);
         UseStamina(_useStaminaAmount);
     }
 
@@ -117,6 +122,12 @@ public class PlayerController : MonoBehaviour
         {
             Jump(_jumpForce);
         }
+        else if (context.performed && GameManager.Instance.Raycaster.IsClimbing)
+        {
+            // 캐릭터가 바라보는 방향
+            Vector3 forward = transform.forward.normalized;
+            // rb.AddForce(forward * -10f + Vector3.up * (_jumpForce / 2), ForceMode.Impulse);
+        }
     }
 
     public void OnLook(InputAction.CallbackContext context)
@@ -124,7 +135,7 @@ public class PlayerController : MonoBehaviour
         _MouseDelta = context.ReadValue<Vector2>();
     }
 
-    private bool isGrounded()
+    public bool isGrounded()
     {
 
         Ray[] rays = new Ray[4];

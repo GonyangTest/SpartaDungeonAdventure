@@ -6,4 +6,10 @@ public class GameManager : Singleton<GameManager>
 {
     public PlayerController Controller;
     public PlayerRaycaster Raycaster;
+
+
+    public void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 } 
