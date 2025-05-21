@@ -7,8 +7,14 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed = 5f;
     [SerializeField] private float _jumpForce = 5f;
-    [SerializeField] private int _maxHealth = 100;
-    private int _currentHealth;
+    [Header("Condition")]
+    [SerializeField] private float _maxHealth = 100;
+    [SerializeField] private float _maxStamina = 100;
+    private float _currentHealth;
+    private float _currentStamina;
+    [SerializeField] private int _useStaminaAmount = 10;
+    [SerializeField] private float _staminaRecoveryAmount = 10;
+
     public float MoveSpeed { get => _moveSpeed; set => _moveSpeed = value; }
     private Rigidbody rb;
 
@@ -24,12 +30,14 @@ public class PlayerController : MonoBehaviour
     private float _maxXLook = 80f;
     private float _lookSensitivity = 0.1f;
 
-    public event Action<int, int> OnHealthChanged;
+    public event Action<float, float> OnHealthChanged;
+    public event Action<float, float> OnStaminaChanged;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         _currentHealth = _maxHealth;
+        _currentStamina = _maxStamina;
     }
     private void Start()
     {
@@ -44,6 +52,12 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         CameraLook();
+
+        if (_currentStamina < _maxStamina)
+        {
+            _currentStamina += _staminaRecoveryAmount * Time.deltaTime;
+            OnStaminaChanged?.Invoke(_currentStamina, _maxStamina);
+        }
     }
 
     private void Move()
@@ -52,6 +66,12 @@ public class PlayerController : MonoBehaviour
         moveDirection *= _moveSpeed;
         moveDirection.y = rb.velocity.y;
         rb.velocity = moveDirection;
+    }
+
+    public void UseStamina(int amount)
+    {
+        _currentStamina = Mathf.Clamp(_currentStamina - amount, 0, _maxStamina);
+        OnStaminaChanged?.Invoke(_currentStamina, _maxStamina);
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -88,12 +108,12 @@ public class PlayerController : MonoBehaviour
     public void Jump(float jumpForce)
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        UseStamina(_useStaminaAmount);
     }
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        Debug.Log("OnJump: " + isGrounded());
-        if (context.performed && isGrounded())
+        if (context.performed && isGrounded() && _currentStamina >= _useStaminaAmount)
         {
             Jump(_jumpForce);
         }
@@ -115,9 +135,7 @@ public class PlayerController : MonoBehaviour
 
         foreach (Ray ray in rays)
         {
-            Debug.Log(ray.origin);
-            Debug.DrawRay(ray.origin, ray.direction * 0.1f, Color.red);
-            if (Physics.Raycast(ray, 0.1f, groundLayer))
+            if (Physics.Raycast(ray, 0.2f, groundLayer))
             {
                 return true;
             }
