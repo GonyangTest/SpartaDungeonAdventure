@@ -24,7 +24,6 @@ public class PlayerController : MonoBehaviour
     private float _maxXLook = 80f;
     private float _lookSensitivity = 0.1f;
 
-
     public event Action<int, int> OnHealthChanged;
 
     private void Awake()
@@ -66,6 +65,16 @@ public class PlayerController : MonoBehaviour
             _moveInput = Vector2.zero;
         }
     }
+
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            IInteractable interactable = GameManager.Instance.Raycaster.Interactable;
+            interactable?.Interact();
+        }
+    }
+
     void CameraLook()
     {
         _cameraCurrentXRotation += _MouseDelta.y * _lookSensitivity;

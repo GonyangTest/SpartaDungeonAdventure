@@ -3,8 +3,7 @@ using UnityEngine.UI;
 
 public class UIManager : Singleton<UIManager>
 {
-    [SerializeField] private Text _promptText;
-    [SerializeField] private Text _interactionText;
+    [SerializeField] private GameObject _interactionUI;
     [SerializeField] private Image _healthBar;
 
     private void Start()
@@ -15,5 +14,15 @@ public class UIManager : Singleton<UIManager>
     public void UpdateHealthBar(int currentHealth, int maxHealth)
     {
         _healthBar.fillAmount = (float)currentHealth / maxHealth;
+    }
+
+    public void ShowInteractionUI(IInteractable interactable)
+    {
+        _interactionUI.GetComponent<InteractionUI>().ShowInteractionUI(interactable);
+    }
+
+    public void HideInteractionUI()
+    {
+        _interactionUI.GetComponent<InteractionUI>().HideInteractionUI();
     }
 } 
