@@ -67,10 +67,10 @@ public class PlayerRaycaster : MonoBehaviour
 
     public void RaycastInteractableObject()
     {
-        Ray ray = _camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
+        Ray ray = new Ray(_head.position, _head.forward);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, _raycastDistance, _interactableLayerMask))
+        if (Physics.Raycast(ray, out hit, 0.5f, _interactableLayerMask))
         {
             if (hit.collider.TryGetComponent(out IInteractable interactable))
             {

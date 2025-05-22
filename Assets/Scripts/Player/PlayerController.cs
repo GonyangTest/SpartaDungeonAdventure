@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform _cameraTransform;
     private float _cameraCurrentXRotation;
     private float _minXLook = -80f;
-    private float _maxXLook = 80f;
+    private float _maxXLook = 10f;
     private float _lookSensitivity = 0.1f;
 
     public event Action<float, float> OnHealthChanged;
