@@ -4,8 +4,8 @@ using UnityEngine.InputSystem;
 
 public class GameManager : Singleton<GameManager>
 {
-    public PlayerController Controller;
-    public PlayerRaycaster Raycaster;
+    [HideInInspector] public PlayerController Controller;
+    [HideInInspector] public PlayerRaycaster Raycaster;
 
 
     public void Start()
