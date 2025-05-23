@@ -99,20 +99,19 @@ Assets/
 
 ### 5) UI 시스템
 **UIManager:**
-체력/스태미나 바, 상호작용 프롬프트, 인벤토리 UI 등 관리.
+- 체력/스태미나 바, 상호작용 프롬프트, 인벤토리 UI 등 관리.
 
 **UIPlayerInventory, UIChestInventory:**
-플레이어/상자 인벤토리 표시.
+- 플레이어/상자 인벤토리 표시.
 ![플레이어 인벤토리 UI](Screenshots/player_inventory.png)
 
 **UIInteraction:**
-상호작용 프롬프트 표시.
-[이미지: 인벤토리 UI, 상호작용 프롬프트]
+- 상호작용 프롬프트 표시.
 ![플레이어 인벤토리 UI](Screenshots/interaction_ui.png)
 
 ### 6) 사운드 시스템
 **SoundManager:**
-효과음 재생 및 관리(점프, 발소리 등).
+- 효과음 재생 및 관리(점프, 발소리 등).
 
 
 
