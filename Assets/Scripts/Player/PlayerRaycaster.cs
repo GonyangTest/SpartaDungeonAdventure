@@ -80,12 +80,22 @@ public class PlayerRaycaster : MonoBehaviour
             else
             {
                 UIManager.Instance.HideInteractionUI();
+                //TODO: 구조 변경 필요
+                if(_interactable != null && _interactable is Chest)
+                {
+                    ((Chest)_interactable).Close();
+                }
                 _interactable = null;
             }
         }
         else
         {
             UIManager.Instance.HideInteractionUI();
+            //TODO: 구조 변경 필요
+            if(_interactable != null && _interactable is Chest)
+            {
+                ((Chest)_interactable).Close();
+            }
             _interactable = null;
         }
     }

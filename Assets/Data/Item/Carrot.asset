@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 785f335bfcc483d43aec34156e4e4a54, type: 3}
-  m_Name: Steak
+  m_Name: Carrot
   m_EditorClassIdentifier: 
-  itemName: "\uC2A4\uD14C\uC774\uD06C"
-  description: "\uCCB4\uB825\uC744 30\uB9CC\uD07C \uD68C\uBCF5\uD55C\uB2E4."
-  icon: {fileID: 0}
-  itemType: 1
-  effects:
+  ItemName: "\uB2F9\uADFC"
+  Description: "5\uCD08\uB3D9\uC548 \uB9E4\uCD08 6 \uD68C\uBCF5\uD55C\uB2E4."
+  Icon: {fileID: 21300000, guid: b53822ec75d701e49b9947d1d09fd81e, type: 3}
+  ItemType: 1
+  Effects:
   - {fileID: 11400000, guid: d2583567847220640b8425a74c83b1d0, type: 2}

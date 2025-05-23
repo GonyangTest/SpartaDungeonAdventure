@@ -81,15 +81,11 @@ public class MovingPlatform : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        // TODO: 오브젝트 태그 혹은 레이어 확인 후 오브젝트 제거
-        Debug.Log("OnTriggerEnter");
         _objectsOnPlatform.Add(other.gameObject);
     }
 
     public void OnTriggerExit(Collider other)
     {
-        // TODO: 오브젝트 태그 혹은 레이어 확인 후 오브젝트 제거
-        Debug.Log("OnTriggerExit");
         _objectsOnPlatform.Remove(other.gameObject);
     }
 }

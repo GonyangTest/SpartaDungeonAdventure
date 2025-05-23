@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 
-[CreateAssetMenu(menuName = "Item/SpeedUpEffect")]
+[CreateAssetMenu(menuName = "Item/Effect/SpeedUpEffect")]
 public class ItemSpeedUp : ItemEffect
 {
     public override void ApplyEffect()
