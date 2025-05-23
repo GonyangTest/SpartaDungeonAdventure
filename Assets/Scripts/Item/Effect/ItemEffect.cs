@@ -5,9 +5,8 @@ public abstract class ItemEffect : ScriptableObject
 {
     public string effectName;
     public string description;
-    public int effectValue;
+    public float effectValue;
     public float duration;
-    public float Interval;
 
     public virtual void ApplyEffect() { }
     public virtual void RemoveEffect() { }

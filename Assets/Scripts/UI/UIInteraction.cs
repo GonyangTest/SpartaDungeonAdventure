@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class InteractionUI : MonoBehaviour
+public class UIInteraction : MonoBehaviour
 {
     public TextMeshProUGUI _nameText;
     public TextMeshProUGUI _promptText;
@@ -27,6 +27,6 @@ public class InteractionUI : MonoBehaviour
 public interface IInteractable
 {
     public string Name { get; }
-    public string InteractionPrompt { get; }
+    public string InteractionPrompt { get; set; }
     public void Interact();
 }

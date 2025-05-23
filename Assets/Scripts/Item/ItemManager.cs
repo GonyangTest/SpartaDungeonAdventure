@@ -1,10 +1,14 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class ItemManager : MonoBehaviour
+public class ItemManager : Singleton<ItemManager>
 {
-    private Dictionary<string, Item> items = new Dictionary<string, Item>();
+    public void UseItem(ItemData itemData)
+    {
+        foreach(ItemEffect effect in itemData.Effects)
+        {
+            GameManager.Instance.Controller.StartItemEffectCoroutine(effect.Effect());
+        }
+    }
+}
 
-    public void CreateItem(Item item) { }
-    public void RemoveItem(Item item) { }
-} 

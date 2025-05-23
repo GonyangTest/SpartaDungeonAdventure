@@ -12,8 +12,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _maxStamina = 100;
     private float _currentHealth;
     private float _currentStamina;
+    [SerializeField] private float _healthDecreaseAmount = 1;
     [SerializeField] private int _useStaminaAmount = 10;
-    [SerializeField] private float _staminaRecoveryAmount = 10;
+    [SerializeField] private float _staminaRecoveryAmount = 5;
 
     public float MoveSpeed { get => _moveSpeed; set => _moveSpeed = value; }
     private Rigidbody rb;
@@ -63,6 +64,8 @@ public class PlayerController : MonoBehaviour
             _currentStamina += _staminaRecoveryAmount * Time.deltaTime;
             OnStaminaChanged?.Invoke(_currentStamina, _maxStamina);
         }
+        _currentHealth -= _healthDecreaseAmount * Time.deltaTime;
+        OnHealthChanged?.Invoke(_currentHealth, _maxHealth);
     }
 
     private void Move()
@@ -110,17 +113,20 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    public void Jump(float jumpForce)
+    public void Jump(float jumpForce, bool isUseStamina = true)
     {
         rb.AddForce(Vector3.up * jumpForce + transform.forward, ForceMode.Impulse);
-        UseStamina(_useStaminaAmount);
+        if (isUseStamina)
+        {
+            UseStamina(_useStaminaAmount);
+        }
     }
 
     public void OnJump(InputAction.CallbackContext context)
     {
         if (context.performed && isGrounded() && _currentStamina >= _useStaminaAmount)
         {
-            Jump(_jumpForce);
+            Jump(_jumpForce, true);
         }
         else if (context.performed && GameManager.Instance.Raycaster.IsClimbing)
         {
@@ -133,6 +139,14 @@ public class PlayerController : MonoBehaviour
     public void OnLook(InputAction.CallbackContext context)
     {
         _MouseDelta = context.ReadValue<Vector2>();
+    }
+
+    public void OnInventory(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            UIManager.Instance.TogglePlayerInventory();
+        }
     }
 
     public bool isGrounded()

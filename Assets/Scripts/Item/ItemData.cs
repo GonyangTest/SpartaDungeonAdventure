@@ -4,11 +4,11 @@ using System.Collections.Generic;
 [CreateAssetMenu(menuName = "Item/ItemData")]
 public class ItemData : ScriptableObject
 {
-    public string itemName;
-    public string description;
-    public Sprite icon;
-    public ItemType itemType;
-    public List<ItemEffect> effects;
+    public string ItemName;
+    public string Description;
+    public Sprite Icon;
+    public ItemType ItemType;
+    public List<ItemEffect> Effects;
 }
 
 public enum ItemType
