@@ -61,26 +61,27 @@ Assets/
 **ThirdPersonCameraController:**
 - 3인칭 카메라 이동 및 회전 제어
 
-![플레이어 인벤토리 UI](Screenshots/game.png)
+![게임 시작 및 3인칭 카메라 시점 화면](./Screenshots/game.png)
+
 게임 시작 및 3인칭 카메라 시점 화면
 
 ### 3) 상호작용 오브젝트
 **Chest (상자):**
 
-![플레이어 인벤토리 UI](Screenshots/chest.png)
+![상자](./Screenshots/chest.png)
 
 - 플레이어가 상호작용(E키) 시 열고 닫을 수 있음
 - 아이템 보관 및 획득, 애니메이션 연동, 인벤토리 UI 표시
 
 **JumpBlock (점프 블록):**
 
-![플레이어 인벤토리 UI](Screenshots/jump_pad.png)
+![점프블록](./Screenshots/jump_pad.png)
 
 플레이어가 닿으면 강한 점프력 부여
 
 **DisappearBlock (사라지는 블록):**
 
-![플레이어 인벤토리 UI](Screenshots/disappear.png)
+![사라지는 블록](./Screenshots/disappear.png)
 
 - 플레이어가 밟으면 일정 시간 후 사라짐 (사라진 일정 시간 후 다시 생성)
 
@@ -103,11 +104,13 @@ Assets/
 
 **UIPlayerInventory, UIChestInventory:**
 - 플레이어/상자 인벤토리 표시.
-![플레이어 인벤토리 UI](Screenshots/player_inventory.png)
+
+![플레이어 인벤토리 UI](./Screenshots/player_inventory.png)
 
 **UIInteraction:**
 - 상호작용 프롬프트 표시.
-![플레이어 인벤토리 UI](Screenshots/interaction_ui.png)
+
+![상호작용 프롬프트](./Screenshots/interaction_ui.png)
 
 ### 6) 사운드 시스템
 **SoundManager:**
