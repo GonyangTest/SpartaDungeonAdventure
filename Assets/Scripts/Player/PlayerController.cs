@@ -34,6 +34,10 @@ public class PlayerController : MonoBehaviour
     public event Action<float, float> OnHealthChanged;
     public event Action<float, float> OnStaminaChanged;
 
+    public event Action OnLand;
+    public event Action OnJump;
+
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -43,6 +47,9 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.Controller = this;
+        UIManager.Instance.Initialize();
+        OnHealthChanged?.Invoke(_currentHealth, _maxHealth);
+        OnStaminaChanged?.Invoke(_currentStamina, _maxStamina);
     }
 
     private void FixedUpdate()
@@ -82,8 +89,9 @@ public class PlayerController : MonoBehaviour
         OnStaminaChanged?.Invoke(_currentStamina, _maxStamina);
     }
 
-    public void OnMove(InputAction.CallbackContext context)
+    public void OnMoveInput(InputAction.CallbackContext context)
     {
+        Debug.Log("OnMoveInput");
         if (context.performed)
         {
             _moveInput = context.ReadValue<Vector2>();
@@ -94,7 +102,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OnInteract(InputAction.CallbackContext context)
+    public void OnInteractInput(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
@@ -116,32 +124,27 @@ public class PlayerController : MonoBehaviour
     public void Jump(float jumpForce, bool isUseStamina = true)
     {
         rb.AddForce(Vector3.up * jumpForce + transform.forward, ForceMode.Impulse);
+        OnJump?.Invoke();
         if (isUseStamina)
         {
             UseStamina(_useStaminaAmount);
         }
     }
 
-    public void OnJump(InputAction.CallbackContext context)
+    public void OnJumpInput(InputAction.CallbackContext context)
     {
-        if (context.performed && isGrounded() && _currentStamina >= _useStaminaAmount)
+        if (context.performed && IsGrounded() && _currentStamina >= _useStaminaAmount)
         {
             Jump(_jumpForce, true);
         }
-        else if (context.performed && GameManager.Instance.Raycaster.IsClimbing)
-        {
-            // 캐릭터가 바라보는 방향
-            Vector3 forward = transform.forward.normalized;
-            // rb.AddForce(forward * -10f + Vector3.up * (_jumpForce / 2), ForceMode.Impulse);
-        }
     }
 
-    public void OnLook(InputAction.CallbackContext context)
+    public void OnLookInput(InputAction.CallbackContext context)
     {
         _MouseDelta = context.ReadValue<Vector2>();
     }
 
-    public void OnInventory(InputAction.CallbackContext context)
+    public void OnInventoryInput(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
@@ -149,7 +152,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public bool isGrounded()
+    public void OnRestartInput(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            GameManager.Instance.Restart();
+            // UIManager.Instance.Restart();
+        }
+    }
+
+    public bool IsGrounded()
     {
 
         Ray[] rays = new Ray[4];
@@ -162,6 +174,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Physics.Raycast(ray, 0.2f, groundLayer))
             {
+                OnLand?.Invoke();
                 return true;
             }
         }
@@ -185,5 +198,10 @@ public class PlayerController : MonoBehaviour
     public void StartItemEffectCoroutine(IEnumerator coroutine)
     {
         StartCoroutine(coroutine);
+    }
+
+    public Vector3 GetVelocity()
+    {
+        return rb.velocity;
     }
 } 

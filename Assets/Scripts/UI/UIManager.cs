@@ -11,6 +11,11 @@ public class UIManager : Singleton<UIManager>
 
     private void Start()
     {
+        Initialize();
+    }
+
+    public void Initialize()
+    {
         GameManager.Instance.Controller.OnHealthChanged += UpdateHealthBar;
         GameManager.Instance.Controller.OnStaminaChanged += UpdateStaminaBar;
     }

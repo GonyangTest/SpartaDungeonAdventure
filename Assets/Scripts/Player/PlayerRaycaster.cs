@@ -48,7 +48,7 @@ public class PlayerRaycaster : MonoBehaviour
 
         if(Physics.Raycast(ray, out hit, 0.5f, _climbableLayerMask))
         {
-            if(!GameManager.Instance.Controller.isGrounded())
+            if(!GameManager.Instance.Controller.IsGrounded())
             {
                 if (_isClimbing)
                 {
