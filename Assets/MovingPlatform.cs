@@ -70,7 +70,6 @@ public class MovingPlatform : MonoBehaviour
     // 현재 웨이포인트에 도달한 후 호출되는 함수입니다.
     private void UpdateWaypoint()
     {
-        Debug.Log("UpdateWaypoint");
 
         currentWaypointIndex++;
         if(currentWaypointIndex >= _waypoints.Count)

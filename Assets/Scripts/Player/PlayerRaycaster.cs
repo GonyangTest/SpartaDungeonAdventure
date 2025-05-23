@@ -35,7 +35,6 @@ public class PlayerRaycaster : MonoBehaviour
         if (Time.time - _lastRaycastTime < _raycastInterval) return;
             _lastRaycastTime = Time.time;  
              
-        Debug.Log(_rigidbody.velocity);
         RaycastInteractableObject();
         RaycastClimbableObject();
     }
@@ -43,7 +42,6 @@ public class PlayerRaycaster : MonoBehaviour
     public void RaycastClimbableObject()
     {
         Ray ray = new Ray(_head.position, _head.forward);
-        Debug.DrawRay(ray.origin, ray.direction * 0.5f, Color.red);
         RaycastHit hit;
 
         if(Physics.Raycast(ray, out hit, 0.5f, _climbableLayerMask))

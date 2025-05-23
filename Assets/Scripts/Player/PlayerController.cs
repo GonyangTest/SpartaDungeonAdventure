@@ -91,7 +91,6 @@ public class PlayerController : MonoBehaviour
 
     public void OnMoveInput(InputAction.CallbackContext context)
     {
-        Debug.Log("OnMoveInput");
         if (context.performed)
         {
             _moveInput = context.ReadValue<Vector2>();
@@ -183,13 +182,11 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        Debug.Log("TakeDamage: " + damage);
         _currentHealth = Mathf.Clamp(_currentHealth - damage, 0, _maxHealth);
         OnHealthChanged?.Invoke(_currentHealth, _maxHealth);
     }
     public void Heal(int amount)
     {
-        Debug.Log("Heal: " + amount);
         _currentHealth = Mathf.Clamp(_currentHealth + amount, 0, _maxHealth);
         OnHealthChanged?.Invoke(_currentHealth, _maxHealth);
     }
