@@ -1,120 +1,120 @@
 # SpartaDungeonAdventure
 
-## 1. °³¿ä
+## 1. ê°œìš”
+ì´ í”„ë¡œì íŠ¸ëŠ” ë‚´ì¼ë°°ì›€ìº í”„ì—ì„œ ì§„í–‰í•œ ê³¼ì œë¡œ, Unity ì—”ì§„ì„ í™œìš©í•˜ì—¬ 3D ìºë¦­í„° ì´ë™ ê¸°ëŠ¥ì„ êµ¬í˜„í•œ ê°„ë‹¨í•œ ê²Œìž„ìž…ë‹ˆë‹¤.
 
-
-## 2. À¯´ÏÆ¼ ¹öÀü
+## 2. ìœ ë‹ˆí‹° ë²„ì „
 Unity 2022.3.17f1
 
-## 3. Ãß°¡ ÆÐÅ°Áö
+## 3. ì¶”ê°€ íŒ¨í‚¤ì§€
 - Unity Input System
 - TextMesh Pro
 
-## 4. ½ÇÇà ¹æ¹ý
-1. **Unity Hub**¿¡¼­ Unity 2022.3.17f1 ¹öÀüÀ¸·Î ÇÁ·ÎÁ§Æ®¸¦ ¿±´Ï´Ù
-2. `Assets/Scenes` Æú´õ¿¡¼­ ¸ÞÀÎ ¾À `StartScene`À» ¿­¾î ½ÇÇàÇÕ´Ï´Ù
+## 4. ì‹¤í–‰ ë°©ë²•
+1. **Unity Hub**ì—ì„œ Unity 2022.3.17f1 ë²„ì „ìœ¼ë¡œ í”„ë¡œì íŠ¸ë¥¼ ì—½ë‹ˆë‹¤
+2. `Assets/Scenes` í´ë”ì—ì„œ ë©”ì¸ ì”¬ `StartScene`ì„ ì—´ì–´ ì‹¤í–‰í•©ë‹ˆë‹¤
 
-**ÇÃ·¹ÀÌ¾î Á¶ÀÛ:**
-- ÀÌµ¿: WASD
-- Á¡ÇÁ: Space
-- »óÈ£ÀÛ¿ë: E
-- ÀÎº¥Åä¸®: TAB
-- ´Ù½Ã½ÃÀÛ: R
+**í”Œë ˆì´ì–´ ì¡°ìž‘:**
+- ì´ë™: WASD
+- ì í”„: Space
+- ìƒí˜¸ìž‘ìš©: E
+- ì¸ë²¤í† ë¦¬: TAB
+- ë‹¤ì‹œì‹œìž‘: R
 
-## 4. ÇÁ·ÎÁ§Æ® ±¸Á¶
+## 4. í”„ë¡œì íŠ¸ êµ¬ì¡°
 ```
 Assets/
-  ¦§¦¡ Animation/         # ¾Ö´Ï¸ÞÀÌ¼Ç ÄÁÆ®·Ñ·¯ ¹× Å¬¸³
-  ¦§¦¡ Data/              # µ¥ÀÌÅÍ ¿¡¼Â
-  ¦§¦¡ Fonts/             # ÆùÆ® ¸®¼Ò½º
-  ¦§¦¡ Input/             # ÀÔ·Â ½Ã½ºÅÛ ¼³Á¤
-  ¦§¦¡ Materials/         # ¸ÓÆ¼¸®¾ó
-  ¦§¦¡ Prefabs/           # ÇÁ¸®ÆÕ(È¯°æ, »óÈ£ÀÛ¿ë, ¾ÆÀÌÅÛ µî)
-  ¦§¦¡ Scenes/            # ¾À ÆÄÀÏ
-  ¦§¦¡ Scripts/           # ÁÖ¿ä C# ½ºÅ©¸³Æ®
-  ¦¢   ¦§¦¡ Core/          # ½Ì±ÛÅÏ, °ÔÀÓ ¸Å´ÏÀú µî
-  ¦¢   ¦§¦¡ UI/            # UI °ü¸® ¹× ÀÎº¥Åä¸®
-  ¦¢   ¦§¦¡ Player/        # ÇÃ·¹ÀÌ¾î ÀÌµ¿, »óÈ£ÀÛ¿ë, Ä«¸Þ¶ó
-  ¦¢   ¦§¦¡ Item/          # ¾ÆÀÌÅÛ µ¥ÀÌÅÍ ¹× È¿°ú
-  ¦¢   ¦§¦¡ Interaction/   # »óÈ£ÀÛ¿ë ¿ÀºêÁ§Æ®(»óÀÚ, Á¡ÇÁÆÐµå µî)
-  ¦¢   ¦¦¦¡ Sound/         # »ç¿îµå ¸Å´ÏÀú
-  ¦§¦¡ Sounds/            # È¿°úÀ½
-  ¦§¦¡ Sprite/            # 2D ½ºÇÁ¶óÀÌÆ®
-  ¦§¦¡ TextMesh Pro/      # ÅØ½ºÆ® ¸Þ½¬ ÇÁ·Î ¸®¼Ò½º
-  ¦¦¦¡ Textures/          # ÅØ½ºÃ³
+  â”œâ”€ Animation/         # ì• ë‹ˆë©”ì´ì…˜ ì»¨íŠ¸ë¡¤ëŸ¬ ë° í´ë¦½
+  â”œâ”€ Data/              # ë°ì´í„° ì—ì…‹
+  â”œâ”€ Fonts/             # í°íŠ¸ ë¦¬ì†ŒìŠ¤
+  â”œâ”€ Input/             # ìž…ë ¥ ì‹œìŠ¤í…œ ì„¤ì •
+  â”œâ”€ Materials/         # ë¨¸í‹°ë¦¬ì–¼
+  â”œâ”€ Prefabs/           # í”„ë¦¬íŒ¹(í™˜ê²½, ìƒí˜¸ìž‘ìš©, ì•„ì´í…œ ë“±)
+  â”œâ”€ Scenes/            # ì”¬ íŒŒì¼
+  â”œâ”€ Scripts/           # ì£¼ìš” C# ìŠ¤í¬ë¦½íŠ¸
+  â”‚   â”œâ”€ Core/          # ì‹±ê¸€í„´, ê²Œìž„ ë§¤ë‹ˆì € ë“±
+  â”‚   â”œâ”€ UI/            # UI ê´€ë¦¬ ë° ì¸ë²¤í† ë¦¬
+  â”‚   â”œâ”€ Player/        # í”Œë ˆì´ì–´ ì´ë™, ìƒí˜¸ìž‘ìš©, ì¹´ë©”ë¼
+  â”‚   â”œâ”€ Item/          # ì•„ì´í…œ ë°ì´í„° ë° íš¨ê³¼
+  â”‚   â”œâ”€ Interaction/   # ìƒí˜¸ìž‘ìš© ì˜¤ë¸Œì íŠ¸(ìƒìž, ì í”„íŒ¨ë“œ ë“±)
+  â”‚   â””â”€ Sound/         # ì‚¬ìš´ë“œ ë§¤ë‹ˆì €
+  â”œâ”€ Sounds/            # íš¨ê³¼ìŒ
+  â”œâ”€ Sprite/            # 2D ìŠ¤í”„ë¼ì´íŠ¸
+  â”œâ”€ TextMesh Pro/      # í…ìŠ¤íŠ¸ ë©”ì‰¬ í”„ë¡œ ë¦¬ì†ŒìŠ¤
+  â””â”€ Textures/          # í…ìŠ¤ì²˜
   ```
 
-## 6. ÁÖ¿ä ½Ã½ºÅÛ ¹× ±â´É
-### 1) °ÔÀÓ ¸Å´ÏÀú ¹× ½Ì±ÛÅÏ ±¸Á¶
-**GameManager:** °ÔÀÓÀÇ Àü¿ª »óÅÂ(ÇÃ·¹ÀÌ¾î, ÀÎº¥Åä¸® µî) °ü¸®. ¾À ¸®½ºÅ¸Æ® ±â´É Á¦°ø
-**Singleton<T>:** ¸ðµç ¸Å´ÏÀú Å¬·¡½º¿¡ Àû¿ëµÇ´Â ½Ì±ÛÅÏ ÆÐÅÏ
+## 6. ì£¼ìš” ì‹œìŠ¤í…œ ë° ê¸°ëŠ¥
+### 1) ê²Œìž„ ë§¤ë‹ˆì € ë° ì‹±ê¸€í„´ êµ¬ì¡°
+**GameManager:** ê²Œìž„ì˜ ì „ì—­ ìƒíƒœ(í”Œë ˆì´ì–´, ì¸ë²¤í† ë¦¬ ë“±) ê´€ë¦¬. ì”¬ ë¦¬ìŠ¤íƒ€íŠ¸ ê¸°ëŠ¥ ì œê³µ
+**Singleton<T>:** ëª¨ë“  ë§¤ë‹ˆì € í´ëž˜ìŠ¤ì— ì ìš©ë˜ëŠ” ì‹±ê¸€í„´ íŒ¨í„´
 
-### 2) ÇÃ·¹ÀÌ¾î ½Ã½ºÅÛ
+### 2) í”Œë ˆì´ì–´ ì‹œìŠ¤í…œ
 **PlayerController:**
-- Unity Input System »ç¿ëÇÏ¿© ÀÌµ¿, Á¡ÇÁ µî Á¶ÀÛ
-- Ã¼·Â/½ºÅÂ¹Ì³ª °ü¸®, Áö¸é Ã¼Å© µî
+- Unity Input System ì‚¬ìš©í•˜ì—¬ ì´ë™, ì í”„ ë“± ì¡°ìž‘
+- ì²´ë ¥/ìŠ¤íƒœë¯¸ë‚˜ ê´€ë¦¬, ì§€ë©´ ì²´í¬ ë“±
 
 **PlayerRaycaster:**
-- ÇÃ·¹ÀÌ¾î ½ÃÁ¡¿¡¼­ »óÈ£ÀÛ¿ë/Å¬¶óÀÌ¹Ö ¿ÀºêÁ§Æ® °¨Áö
-- ·¹ÀÌÄ³½ºÆ®·Î »óÈ£ÀÛ¿ë °¡´É ¿ÀºêÁ§Æ® Å½Áö ¹× UI Ç¥½Ã
+- í”Œë ˆì´ì–´ ì‹œì ì—ì„œ ìƒí˜¸ìž‘ìš©/í´ë¼ì´ë° ì˜¤ë¸Œì íŠ¸ ê°ì§€
+- ë ˆì´ìºìŠ¤íŠ¸ë¡œ ìƒí˜¸ìž‘ìš© ê°€ëŠ¥ ì˜¤ë¸Œì íŠ¸ íƒì§€ ë° UI í‘œì‹œ
 
 **ThirdPersonCameraController:**
-- 3ÀÎÄª Ä«¸Þ¶ó ÀÌµ¿ ¹× È¸Àü Á¦¾î
+- 3ì¸ì¹­ ì¹´ë©”ë¼ ì´ë™ ë° íšŒì „ ì œì–´
 
-![°ÔÀÓ ½ÃÀÛ ¹× 3ÀÎÄª Ä«¸Þ¶ó ½ÃÁ¡ È­¸é](./Screenshots/game.PNG)
+![ê²Œìž„ ì‹œìž‘ ë° 3ì¸ì¹­ ì¹´ë©”ë¼ ì‹œì  í™”ë©´](./Screenshots/game.PNG)
 
-°ÔÀÓ ½ÃÀÛ ¹× 3ÀÎÄª Ä«¸Þ¶ó ½ÃÁ¡ È­¸é
+ê²Œìž„ ì‹œìž‘ ë° 3ì¸ì¹­ ì¹´ë©”ë¼ ì‹œì  í™”ë©´
 
-### 3) »óÈ£ÀÛ¿ë ¿ÀºêÁ§Æ®
-**Chest (»óÀÚ):**
+### 3) ìƒí˜¸ìž‘ìš© ì˜¤ë¸Œì íŠ¸
+**Chest (ìƒìž):**
 
-![»óÀÚ](./Screenshots/chest.PNG)
+![ìƒìž](./Screenshots/chest.PNG)
 
-- ÇÃ·¹ÀÌ¾î°¡ »óÈ£ÀÛ¿ë(EÅ°) ½Ã ¿­°í ´ÝÀ» ¼ö ÀÖÀ½
-- ¾ÆÀÌÅÛ º¸°ü ¹× È¹µæ, ¾Ö´Ï¸ÞÀÌ¼Ç ¿¬µ¿, ÀÎº¥Åä¸® UI Ç¥½Ã
+- í”Œë ˆì´ì–´ê°€ ìƒí˜¸ìž‘ìš©(Eí‚¤) ì‹œ ì—´ê³  ë‹«ì„ ìˆ˜ ìžˆìŒ
+- ì•„ì´í…œ ë³´ê´€ ë° íšë“, ì• ë‹ˆë©”ì´ì…˜ ì—°ë™, ì¸ë²¤í† ë¦¬ UI í‘œì‹œ
 
-**JumpBlock (Á¡ÇÁ ºí·Ï):**
+**JumpBlock (ì í”„ ë¸”ë¡):**
 
-![Á¡ÇÁºí·Ï](./Screenshots/jump_pad.PNG)
+![ì í”„ë¸”ë¡](./Screenshots/jump_pad.PNG)
 
-ÇÃ·¹ÀÌ¾î°¡ ´êÀ¸¸é °­ÇÑ Á¡ÇÁ·Â ºÎ¿©
+í”Œë ˆì´ì–´ê°€ ë‹¿ìœ¼ë©´ ê°•í•œ ì í”„ë ¥ ë¶€ì—¬
 
-**DisappearBlock (»ç¶óÁö´Â ºí·Ï):**
+**DisappearBlock (ì‚¬ë¼ì§€ëŠ” ë¸”ë¡):**
 
-![»ç¶óÁö´Â ºí·Ï](./Screenshots/disappear.PNG)
+![ì‚¬ë¼ì§€ëŠ” ë¸”ë¡](./Screenshots/disappear.PNG)
 
-- ÇÃ·¹ÀÌ¾î°¡ ¹âÀ¸¸é ÀÏÁ¤ ½Ã°£ ÈÄ »ç¶óÁü (»ç¶óÁø ÀÏÁ¤ ½Ã°£ ÈÄ ´Ù½Ã »ý¼º)
+- í”Œë ˆì´ì–´ê°€ ë°Ÿìœ¼ë©´ ì¼ì • ì‹œê°„ í›„ ì‚¬ë¼ì§ (ì‚¬ë¼ì§„ ì¼ì • ì‹œê°„ í›„ ë‹¤ì‹œ ìƒì„±)
 
-**MovingBlock (ÀÌµ¿ ºí·Ï):**
-- ¿©·¯°³ÀÇ Waypoint¸¦ ÁöÁ¤ÇØ ¼øÂ÷ÀûÀ¸·Î ÀÌµ¿½ÃÅ°´Â ºí·Ï
+**MovingBlock (ì´ë™ ë¸”ë¡):**
+- ì—¬ëŸ¬ê°œì˜ Waypointë¥¼ ì§€ì •í•´ ìˆœì°¨ì ìœ¼ë¡œ ì´ë™ì‹œí‚¤ëŠ” ë¸”ë¡
 
-### 4) ¾ÆÀÌÅÛ ½Ã½ºÅÛ
+### 4) ì•„ì´í…œ ì‹œìŠ¤í…œ
 **ItemData (ScriptableObject):**
-- ¾ÆÀÌÅÛ ÀÌ¸§, ¼³¸í, ¾ÆÀÌÄÜ, Å¸ÀÔ(Àåºñ/¼Òºñ), È¿°ú ¸®½ºÆ® µî
+- ì•„ì´í…œ ì´ë¦„, ì„¤ëª…, ì•„ì´ì½˜, íƒ€ìž…(ìž¥ë¹„/ì†Œë¹„), íš¨ê³¼ ë¦¬ìŠ¤íŠ¸ ë“±
 
 **ItemEffect (ScriptableObject):**
-- Ã¼·Â È¸º¹, ½ºÇÇµå Áõ°¡ µî ´Ù¾çÇÑ È¿°ú¸¦ `coroutine`À¸·Î Àû¿ë/ÇØÁ¦.
+- ì²´ë ¥ íšŒë³µ, ìŠ¤í”¼ë“œ ì¦ê°€ ë“± ë‹¤ì–‘í•œ íš¨ê³¼ë¥¼ `coroutine`ìœ¼ë¡œ ì ìš©/í•´ì œ.
 
 **ItemManager:**
-- ¾ÆÀÌÅÛ °ü¸®
+- ì•„ì´í…œ ê´€ë¦¬
 
-### 5) UI ½Ã½ºÅÛ
+### 5) UI ì‹œìŠ¤í…œ
 **UIManager:**
-- Ã¼·Â/½ºÅÂ¹Ì³ª ¹Ù, »óÈ£ÀÛ¿ë ÇÁ·ÒÇÁÆ®, ÀÎº¥Åä¸® UI µî °ü¸®.
+- ì²´ë ¥/ìŠ¤íƒœë¯¸ë‚˜ ë°”, ìƒí˜¸ìž‘ìš© í”„ë¡¬í”„íŠ¸, ì¸ë²¤í† ë¦¬ UI ë“± ê´€ë¦¬.
 
 **UIPlayerInventory, UIChestInventory:**
-- ÇÃ·¹ÀÌ¾î/»óÀÚ ÀÎº¥Åä¸® Ç¥½Ã.
+- í”Œë ˆì´ì–´/ìƒìž ì¸ë²¤í† ë¦¬ í‘œì‹œ.
 
-![ÇÃ·¹ÀÌ¾î ÀÎº¥Åä¸® UI](./Screenshots/player_inventory.PNG)
+![í”Œë ˆì´ì–´ ì¸ë²¤í† ë¦¬ UI](./Screenshots/player_inventory.PNG)
 
 **UIInteraction:**
-- »óÈ£ÀÛ¿ë ÇÁ·ÒÇÁÆ® Ç¥½Ã.
+- ìƒí˜¸ìž‘ìš© í”„ë¡¬í”„íŠ¸ í‘œì‹œ.
 
-![»óÈ£ÀÛ¿ë ÇÁ·ÒÇÁÆ®](./Screenshots/interaction_ui.PNG)
+![ìƒí˜¸ìž‘ìš© í”„ë¡¬í”„íŠ¸](./Screenshots/interaction_ui.PNG)
 
-### 6) »ç¿îµå ½Ã½ºÅÛ
+### 6) ì‚¬ìš´ë“œ ì‹œìŠ¤í…œ
 **SoundManager:**
-- È¿°úÀ½ Àç»ý ¹× °ü¸®(Á¡ÇÁ, ¹ß¼Ò¸® µî).
+- íš¨ê³¼ìŒ ìž¬ìƒ ë° ê´€ë¦¬(ì í”„, ë°œì†Œë¦¬ ë“±).
 
 
 
